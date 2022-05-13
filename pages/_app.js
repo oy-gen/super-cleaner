@@ -16,8 +16,15 @@ export default MyApp;
 
 const GlobalStyle = createGlobalStyle`
   body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1;
     margin: 0;
     padding: 0;
+    background-color: lightgray;
     box-sizing: border-box;
   }
 `;
