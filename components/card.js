@@ -5,12 +5,12 @@ export default function Card({ children }) {
 }
 
 const StyledCard = styled.div`
+  grid-column: 2/3;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   background-color: darkgrey;
-  padding: 3rem;
-  margin: 3rem;
-  gap: 3rem;
+  padding: 1rem 3rem;
+  gap: 1rem;
   border-radius: 20px;
 `;
