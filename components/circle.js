@@ -1,30 +1,30 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import React, { useState } from 'react';
 
 export default function Circle() {
-  return <StyledCircle></StyledCircle>;
+  const [value, setValue] = useState(false);
+  return (
+    <StyledButton
+      status={value}
+      type="button"
+      onClick={() => {
+        setValue(!value);
+      }}
+    ></StyledButton>
+  );
 }
 
-const StyledCircle = styled.div`
+const StyledButton = styled.button`
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background-color: red;
   outline: 2px solid black;
+  background: red;
+  transition: background 0.5s;
+
+  ${({ status = false }) => {
+    return css`
+      background: ${status ? 'green' : 'red'};
+    `;
+  }}
 `;
-
-
-
-// import styled, { css } from "styled-components";
-
-// const StyledDiv = styled.div`
-//   height: 50px;
-//   background: pink;
-//   transition: width 0.5s, background 0.5s;
-
-//   ${({ bool = false }) => {
-//     return css`
-//       width: ${bool ? "150px" : "100px"};
-//       background: ${bool ? "lightblue" : "pink"};
-//     `;
-//   }}
-// `;

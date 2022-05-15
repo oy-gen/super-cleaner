@@ -11,6 +11,8 @@ export default function Home() {
   const rooms = useStore(state => state.rooms);
   const assignedFlatmate = useStore(state => state.assignedFlatmate);
 
+
+  
   return (
     <CardContainer>
       {rooms.map(room => (
@@ -19,7 +21,7 @@ export default function Home() {
             <h2>{room.name}</h2>
           </Link>
           <div style={{ display: 'flex', gap: '15px' }}>
-            <Avatar alt={room.name} src={room.assignee} />
+            <Avatar alt={room.name} src={room.assigneeId} />
             <Circle></Circle>
             {/*   status: {room.status} */}
           </div>

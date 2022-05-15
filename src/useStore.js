@@ -32,40 +32,31 @@ const useStore = create(set => {
         name: 'Eva',
         id: nanoid(),
         photo: 'https://randomuser.me/api/portraits/women/56.jpg',
+        assignedRooms: [],
       },
     ],
 
-    assignFlatmate: flatmateId => {
-      set(state => {
-        return { rooms: (state.rooms[0].assigneeId = flatmateId) };
-      });
-    },
-    filterAssignedRooms: flatmateId => {
-      set(state => {
-        return {
-          rooms: state.rooms.filter(room => room.assigneeId === flatmateId),
-        };
-      });
-    },
+    // assignFlatmate: flatmateId => {
+    //   set(state => {
+    //     return { rooms: (state.rooms[0].assigneeId = flatmateId) };
+    //   });
+    // },
+    // filterAssignedRooms: flatmateId => {
+    //   set(state => {
+    //     return {
+    //       rooms: state.rooms.filter(room => room.assigneeId === flatmateId),
+    //     };
+    //   });
+    // },
 
-    checkTodo: id => {
+    changeStatus: id => {
       set(state => {
         return {
-          todos: state.todos.map(todo_ =>
-            todo_.id === id ? { ...todo_, isChecked: !todo_.isChecked } : todo_
+          rooms: state.rooms.map(room =>
+            room.id === id ? { ...room, status: !room.status } : room
           ),
         };
       });
-    },
-    fetchedData: { results: [] },
-    fetchSomething: async url => {
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        set({ fetchedData: data });
-      } catch (error) {
-        console.error(`Upps das war ein Fehler: ${error}`);
-      }
     },
   };
 });

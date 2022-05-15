@@ -7,8 +7,7 @@ import Circle from '../../components/Circle';
 export default function Room() {
   const rooms = useStore(state => state.rooms);
   const flatmates = useStore(state => state.flatmates);
-  const assignFlatmate = useStore(state => state.assignFlatmate);
-
+  const changeStatus = useStore(state => state.changeStatus);
   return (
     <>
       <CardContainer>
@@ -39,7 +38,11 @@ export default function Room() {
           </FlexboxRow>
           <FlexboxRow>
             <p>Status:</p>
-            <Circle status={rooms[0].status} />
+            <Circle
+              onClick={() => {
+                changeStatus(room.id);
+              }}
+            />
           </FlexboxRow>
           <p>
             Frequency: <span>weekly</span>
