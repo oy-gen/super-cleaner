@@ -4,26 +4,29 @@ import { nanoid } from 'nanoid';
 const useStore = create(set => {
   return {
     rooms: [
-      { name: 'Kitchen', id: nanoid(), assignee: null, status: false },
-      { name: 'Bathroom', id: nanoid(), assignee: null, status: false },
-      { name: 'Livingroom', id: nanoid(), assignee: null, status: false },
-      { name: 'Hall', id: nanoid(), assignee: null, status: false },
+      { name: 'Kitchen', id: nanoid(), assigneeId: null, status: false },
+      { name: 'Bathroom', id: nanoid(), assigneeId: null, status: false },
+      { name: 'Livingroom', id: nanoid(), assigneeId: null, status: false },
+      { name: 'Hall', id: nanoid(), assigneeId: null, status: false },
     ],
     flatmates: [
       {
         name: 'Norman',
         id: nanoid(),
         photo: 'https://randomuser.me/api/portraits/men/3.jpg',
+        assignedRooms: [],
       },
       {
         name: 'Laura',
         id: nanoid(),
         photo: 'https://randomuser.me/api/portraits/women/73.jpg',
+        assignedRooms: [],
       },
       {
         name: 'Paul',
         id: nanoid(),
         photo: 'https://randomuser.me/api/portraits/men/1.jpg',
+        assignedRooms: [],
       },
       {
         name: 'Eva',
@@ -32,21 +35,19 @@ const useStore = create(set => {
       },
     ],
 
-    addTodo: inputValue => {
+    assignFlatmate: flatmateId => {
+      set(state => {
+        return { rooms: (state.rooms[0].assigneeId = flatmateId) };
+      });
+    },
+    filterAssignedRooms: flatmateId => {
       set(state => {
         return {
-          todos: [
-            { name: inputValue, id: nanoid(), isChecked: false },
-            ...state.todos,
-          ],
+          rooms: state.rooms.filter(room => room.assigneeId === flatmateId),
         };
       });
     },
-    deleteTodo: id => {
-      set(state => {
-        return { todos: state.todos.filter(todo_ => todo_.id !== id) };
-      });
-    },
+
     checkTodo: id => {
       set(state => {
         return {

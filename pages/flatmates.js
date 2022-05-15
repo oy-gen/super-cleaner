@@ -8,6 +8,7 @@ import CardContainer from '../components/CardContainer';
 export default function FlatMates() {
   const rooms = useStore(state => state.rooms);
   const flatmates = useStore(state => state.flatmates);
+  const filterAssignedRooms = useStore(state => state.filterAssignedRooms);
 
   return (
     <CardContainer>
@@ -21,7 +22,17 @@ export default function FlatMates() {
                 <Avatar alt={flatmate.name} src={flatmate.photo} />
                 <h2>{flatmate.name}</h2>
               </div>
-              <button>open</button>
+              <button
+                onClick={() =>
+                  filterAssignedRooms(flatmate.id).map(room => (
+                    <li key={room.id} name={room.name}>
+                      {room.name}
+                    </li>
+                  ))
+                }
+              >
+                open
+              </button>
             </FlexboxRow>
 
             <ul>
