@@ -15,8 +15,12 @@ export default function FlatMates() {
         <Card key={flatmate.id} name={flatmate.name}>
           <FlexboxColumn>
             <FlexboxRow>
-              <Avatar alt={flatmate.name} src={flatmate.photo} />
-              <h2>{flatmate.name}</h2>
+              <div
+                style={{ display: 'flex', alignItems: 'center', gap: '15px' }}
+              >
+                <Avatar alt={flatmate.name} src={flatmate.photo} />
+                <h2>{flatmate.name}</h2>
+              </div>
               <button>open</button>
             </FlexboxRow>
 
@@ -40,6 +44,7 @@ const FlexboxRow = styled.div`
   align-items: center;
   gap: 15px;
 `;
+
 const FlexboxColumn = styled.div`
   display: flex;
   flex-direction: column;

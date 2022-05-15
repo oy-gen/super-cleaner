@@ -14,15 +14,15 @@ export default function Home() {
       {rooms.map(room => (
         <Card key={room.id} name={room.name}>
           <h2>{room.name}</h2>
-          <div style={{display:'flex', gap: '15px'}}>
-          <Avatar alt={room.name} src={room.assignee} />
-          <Circle></Circle>
-          {/*   status: {room.status} */}
+          <div style={{ display: 'flex', gap: '15px' }}>
+            <Avatar alt={room.name} src={room.assignee} />
+            <Circle></Circle>
+            {/*   status: {room.status} */}
           </div>
         </Card>
       ))}
       <Nav></Nav>
-      </CardContainer>
+    </CardContainer>
   );
 }
 
@@ -30,4 +30,3 @@ const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
 `;
-
