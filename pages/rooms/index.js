@@ -2,54 +2,41 @@ import useStore from '../../src/useStore';
 import CardContainer from '../../components/CardContainer';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Circle from '../../components/Circle';
+import CircleButton from '../../components/circleButton';
+import FlatmateSelector from '../../components/selector';
 
 export default function Room() {
   const rooms = useStore(state => state.rooms);
   const flatmates = useStore(state => state.flatmates);
   const changeStatus = useStore(state => state.changeStatus);
   return (
-    <>
-      <CardContainer>
-        <RoomCard>
-          <FlexboxColumn>
-            <button style={{ width: '100px' }}>
-              <Link href="/">
-                <a>go back</a>
-              </Link>
-            </button>
-            <h1>Kitchen</h1>
-          </FlexboxColumn>
-          <FlexboxRow>
-            <p>Assignee:</p>
-            <select
-              onChange={event => {
-                assignFlatmate(event.target.value);
-                console.log(rooms[0].assigneeId);
-                console.log(flatmates);
-              }}
-            >
-              {flatmates.map(flatmate => (
-                <option key={flatmate.id} value={flatmate.id}>
-                  {flatmate.name}
-                </option>
-              ))}
-            </select>
-          </FlexboxRow>
-          <FlexboxRow>
-            <p>Status:</p>
-            <Circle
-              onClick={() => {
-                changeStatus(room.id);
-              }}
-            />
-          </FlexboxRow>
-          <p>
-            Frequency: <span>weekly</span>
-          </p>
-        </RoomCard>
-      </CardContainer>
-    </>
+    <CardContainer>
+      <RoomCard>
+        <FlexboxColumn>
+          <button style={{ width: '100px' }}>
+            <Link href="/">
+              <a>go back</a>
+            </Link>
+          </button>
+          <h1>Kitchen</h1>
+        </FlexboxColumn>
+        <FlexboxRow>
+          <p>Assignee:</p>
+          <FlatmateSelector />
+        </FlexboxRow>
+        <FlexboxRow>
+          <p>Status:</p>
+          <CircleButton
+            onClick={() => {
+              changeStatus();
+            }}
+          />
+        </FlexboxRow>
+        <p>
+          Frequency: <span>weekly</span>
+        </p>
+      </RoomCard>
+    </CardContainer>
   );
 }
 

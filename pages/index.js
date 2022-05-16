@@ -4,15 +4,14 @@ import useStore from '../src/useStore';
 import Nav from '../components/nav';
 import CardContainer from '../components/CardContainer';
 import Avatar from '@mui/material/Avatar';
-import Circle from '../components/circle';
+import CircleDisplay from '../components/circleDisplay';
 import Link from 'next/link';
 
 export default function Home() {
   const rooms = useStore(state => state.rooms);
-  const assignedFlatmate = useStore(state => state.assignedFlatmate);
+  const assignFlatmate = useStore(state => state.assignFlatmate);
 
-
-  
+  console.log(...rooms);
   return (
     <CardContainer>
       {rooms.map(room => (
@@ -20,10 +19,9 @@ export default function Home() {
           <Link href="../rooms">
             <h2>{room.name}</h2>
           </Link>
-          <div style={{ display: 'flex', gap: '15px' }}>
+          <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
             <Avatar alt={room.name} src={room.assigneeId} />
-            <Circle></Circle>
-            {/*   status: {room.status} */}
+            <CircleDisplay></CircleDisplay>
           </div>
         </Card>
       ))}

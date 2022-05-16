@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import React, { useState } from 'react';
 
-export default function Circle() {
+export default function CircleButton() {
   const [value, setValue] = useState(false);
   return (
     <StyledButton
