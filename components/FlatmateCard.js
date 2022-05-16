@@ -2,12 +2,14 @@ import styled from 'styled-components';
 import Card from '../components/card';
 import useStore from '../src/useStore';
 import Avatar from '@mui/material/Avatar';
-import CircleDisplay from '../components/circleDisplay';
+import CircleButton from '../components/circleButton';
 import { useState } from 'react';
+import FlatMates from '../pages/flatmates';
 
 export default function FlatmateCard({ flatmate }) {
   const [showDetails, setShowDetails] = useState(false);
   const rooms = useStore(state => state.rooms);
+  const flatmates = useStore(state => state.flatmates);
 
   return (
     <Card>
@@ -26,7 +28,7 @@ export default function FlatmateCard({ flatmate }) {
               .map(assignedroom => (
                 <div key={assignedroom.id} name={assignedroom.name}>
                   {assignedroom.name}
-                  <CircleDisplay />
+                  <CircleButton />
                 </div>
               ))}
           </FlexboxRow>

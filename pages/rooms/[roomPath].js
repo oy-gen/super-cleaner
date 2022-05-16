@@ -30,15 +30,9 @@ export default function Room() {
           <FlexboxRow>
             <p>Assignee:</p>
             <select
-              onChange={event => {
-                assignFlatmate(event.target.value);
-                console.log(event.target.value);
-                console.log(rooms);
-              }}
+              onChange={event => assignFlatmate(room.id, event.target.value)}
             >
-              <option value="" disabled selected>
-                Select your option
-              </option>
+              <option value="">Select your option</option>
               {flatmates.map(flatmate => (
                 <option key={flatmate.id} value={flatmate.id}>
                   {flatmate.name}
