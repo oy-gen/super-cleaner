@@ -6,19 +6,19 @@ const useStore = create(set => {
       {
         name: 'Kitchen',
         id: 'KITCHENID',
-        assigneeId: 'LauraID',
+        assigneeId: '',
         status: false,
       },
       {
         name: 'Bathroom',
         id: 'BATHROOMID',
-        assigneeId: 'LauraID',
+        assigneeId: 'NormanID',
         status: false,
       },
       {
         name: 'Livingroom',
         id: 'LIVINGID',
-        assigneeId: 'LauraID',
+        assigneeId: 'NormanID',
         status: false,
       },
       { name: 'Hall', id: 'HALLID', assigneeId: '', status: false },
@@ -51,10 +51,10 @@ const useStore = create(set => {
     ],
 
     changeStatus: id => {
-      set(state => {
-        const updatedRooms = state.rooms.map(room => {
+      set(status => {
+        const updatedRooms = status.rooms.map(room => {
           if (room.id === id) {
-            room.state = !room.state;
+            room.status = !room.status;
             return room;
           }
           return room;
@@ -69,7 +69,7 @@ const useStore = create(set => {
       set(state => {
         const updatedMates = state.rooms.map(room => {
           if (room.id === roomId) {
-            room.assignedId = flatmateId;
+            room.assigneeId = flatmateId;
             return room;
           }
           return room;

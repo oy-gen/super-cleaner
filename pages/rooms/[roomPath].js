@@ -1,8 +1,7 @@
 import useStore from '../../src/useStore';
 import CardContainer from '../../components/CardContainer';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Link from 'next/link';
-import CircleButton from '../../components/circleButton';
 import { useRouter } from 'next/router';
 
 export default function Room() {
@@ -40,12 +39,14 @@ export default function Room() {
               ))}
             </select>
           </FlexboxRow>
+          {console.log(rooms)}
           <FlexboxRow>
             <p>Status:</p>
-            <CircleButton
+            <StyledButton
               onClick={() => {
-                changeStatus();
+                changeStatus(room.id);
               }}
+              status={room.status}
             />
           </FlexboxRow>
           <p>
@@ -80,4 +81,19 @@ const FlexboxColumn = styled.div`
   flex-direction: column;
   align-items: left;
   gap: 15px;
+`;
+
+const StyledButton = styled.button`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  outline: 2px solid black;
+  background-color: red;
+  transition: background 0.5s;
+
+  ${({ status = false }) => {
+    return css`
+      background: ${status ? 'green' : 'red'};
+    `;
+  }}
 `;

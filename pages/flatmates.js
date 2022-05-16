@@ -1,15 +1,11 @@
 import styled from 'styled-components';
-import Card from '../components/card';
 import useStore from '../src/useStore';
-import Avatar from '@mui/material/Avatar';
 import Nav from '../components/nav';
 import CardContainer from '../components/CardContainer';
 import FlatmateCard from '../components/FlatmateCard';
 
 export default function FlatMates() {
-  const rooms = useStore(state => state.rooms);
   const flatmates = useStore(state => state.flatmates);
-  const filterAssignedRooms = useStore(state => state.filterAssignedRooms);
 
   return (
     <CardContainer>

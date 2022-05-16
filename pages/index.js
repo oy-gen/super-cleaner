@@ -1,10 +1,9 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Card from '../components/card';
 import useStore from '../src/useStore';
 import Nav from '../components/nav';
 import CardContainer from '../components/CardContainer';
 import Avatar from '@mui/material/Avatar';
-import CircleButton from '../components/circleButton';
 import Link from 'next/link';
 
 export default function Home() {
@@ -28,7 +27,7 @@ export default function Home() {
                   src={filteredFlatmate.photo}
                 />
               ))}
-            <CircleButton />
+            <StyledDisplay status={room.status} />
           </div>
         </Card>
       ))}
@@ -40,4 +39,19 @@ export default function Home() {
 const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
+`;
+
+const StyledDisplay = styled.div`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  outline: 2px solid black;
+  background-color: red;
+  transition: background 0.5s;
+
+  ${({ status = false }) => {
+    return css`
+      background: ${status ? 'green' : 'red'};
+    `;
+  }}
 `;
