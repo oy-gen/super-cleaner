@@ -9,6 +9,7 @@ import Link from 'next/link';
 
 export default function Home() {
   const rooms = useStore(state => state.rooms);
+  const flatmates = useStore(state => state.flatmates);
 
   return (
     <CardContainer>
@@ -18,13 +19,15 @@ export default function Home() {
             <h2>{room.name}</h2>
           </Link>
           <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
-
-
-
-
-
-
-            <Avatar alt={room.name} src={room.assigneeId} />
+            {flatmates
+              .filter(flatmate => room.assigneeId === flatmate.id)
+              .map(filteredFlatmate => (
+                <Avatar
+                  key={filteredFlatmate.id}
+                  alt={filteredFlatmate.id}
+                  src={filteredFlatmate.photo}
+                />
+              ))}
             <CircleButton />
           </div>
         </Card>
@@ -38,9 +41,3 @@ const Title = styled.h1`
   font-size: 50px;
   color: ${({ theme }) => theme.colors.primary};
 `;
-
-
-// {rooms
-//   .filter(room => room.assigneeId === flatmate.id)
-//   .map(assignedroom => (
-//     <div key={assignedroom.id} name={assignedroom.name}>

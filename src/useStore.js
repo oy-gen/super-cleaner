@@ -6,19 +6,19 @@ const useStore = create(set => {
       {
         name: 'Kitchen',
         id: 'KITCHENID',
-        assigneeId: '',
+        assigneeId: 'LauraID',
         status: false,
       },
       {
         name: 'Bathroom',
         id: 'BATHROOMID',
-        assigneeId: '',
+        assigneeId: 'LauraID',
         status: false,
       },
       {
         name: 'Livingroom',
         id: 'LIVINGID',
-        assigneeId: '',
+        assigneeId: 'LauraID',
         status: false,
       },
       { name: 'Hall', id: 'HALLID', assigneeId: '', status: false },
