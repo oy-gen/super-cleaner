@@ -25,7 +25,7 @@ export default function FlatmateCard({ flatmate }) {
               .map(assignedroom => (
                 <div key={assignedroom.id} name={assignedroom.name}>
                   {assignedroom.name}
-                  <StyledDisplay status={assignedroom.status} />
+                  <StyledDisplay_ status={assignedroom.status} />
                 </div>
               ))}
           </FlexboxRow>
@@ -49,7 +49,7 @@ const FlexboxColumn = styled.div`
   gap: 15px;
 `;
 
-const StyledDisplay = styled.div`
+const StyledDisplay_ = styled.div`
   width: 38px;
   height: 38px;
   border-radius: 50%;
