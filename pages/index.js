@@ -4,7 +4,7 @@ import useStore from '../src/useStore';
 import Nav from '../components/nav';
 import CardContainer from '../components/CardContainer';
 import Avatar from '@mui/material/Avatar';
-import CircleDisplay from '../components/circleDisplay';
+import CircleButton from '../components/circleButton';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -22,7 +22,7 @@ export default function Home() {
           </Link>
           <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
             <Avatar alt={room.name} src={room.assigneeId} />
-            <CircleDisplay></CircleDisplay>
+            <CircleButton />
           </div>
         </Card>
       ))}
