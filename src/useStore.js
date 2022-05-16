@@ -50,29 +50,36 @@ const useStore = create(set => {
       },
     ],
 
-    changeStatus: () => {
+    changeStatus: id => {
       set(state => {
+        const updatedRooms = state.rooms.map(room => {
+          if (room.id === id) {
+            room.state = !room.state;
+            return room;
+          }
+          return room;
+        });
         return {
-          rooms: state.rooms.map(room => room.status === !room.status),
+          rooms: updatedRooms,
         };
       });
     },
-    assignFlatmate: flatmateId => {
+
+    assignFlatmate_: (roomId, flatmateId) => {
       set(state => {
+        const updatedMates = state.rooms.map(room => {
+          if (room.id === roomId) {
+            room.assignedId = flatmateId;
+            return room;
+          }
+          return room;
+        });
         return {
-          rooms: (state.rooms[0].assigneeId = flatmateId),
+          rooms: updatedMates,
         };
       });
     },
   };
 });
-// rooms: state.rooms.map((room) => room.assigneeId ? {...room, assigneeId = flatmateId } : room ))
 
 export default useStore;
-
-// rooms: [
-//   { name: 'Kitchen', id: nanoid(), assigneeId: null, status: false },
-//   { name: 'Bathroom', id: nanoid(), assigneeId: null, status: false },
-//   { name: 'Livingroom', id: nanoid(), assigneeId: null, status: false },
-//   { name: 'Hall', id: nanoid(), assigneeId: null, status: false },
-// ],
