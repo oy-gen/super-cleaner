@@ -5,8 +5,7 @@ import Link from 'next/link';
 import CircleButton from '../../components/circleButton';
 import FlatmateSelector from '../../components/selector';
 
-export default function Room() {
-  const rooms = useStore(state => state.rooms);
+export default function Room({ room }) {
   const flatmates = useStore(state => state.flatmates);
   const changeStatus = useStore(state => state.changeStatus);
   return (
@@ -26,9 +25,9 @@ export default function Room() {
         </FlexboxRow>
         <FlexboxRow>
           <p>Status:</p>
-          <CircleButton
+          <CircleButton status={room}
             onClick={() => {
-              changeStatus();
+              changeStatus(room.id);
             }}
           />
         </FlexboxRow>

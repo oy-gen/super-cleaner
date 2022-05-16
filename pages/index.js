@@ -21,7 +21,7 @@ export default function Home() {
           </Link>
           <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>
             <Avatar alt={room.name} src={room.assigneeId} />
-            <CircleDisplay></CircleDisplay>
+            <CircleDisplay />
           </div>
         </Card>
       ))}

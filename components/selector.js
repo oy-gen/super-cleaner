@@ -1,17 +1,16 @@
 import useStore from '../src/useStore';
 import { useState } from 'react';
 
-export default function FlatmateSelector() {
+export default function FlatmateSelector(id) {
   const rooms = useStore(state => state.rooms);
+  const room = rooms.find(room_ => room_.id === id);
   const flatmates = useStore(state => state.flatmates);
   const assignFlatmate = useStore(state => state.assignFlatmate);
   return (
     <select
-      onChange={event => {
-        assignFlatmate(event.target.value);
-        console.log(event.target.value);
-        console.log(rooms);
-      }}
+      onChange={eventAssign =>
+        assignFlatmate(room.id, eventAssign.target.value)
+      }
     >
       <option value="" disabled selected>
         Select your option

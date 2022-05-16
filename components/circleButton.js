@@ -1,17 +1,8 @@
 import styled, { css } from 'styled-components';
 import React, { useState } from 'react';
 
-export default function CircleButton() {
-  const [value, setValue] = useState(false);
-  return (
-    <StyledButton
-      status={value}
-      type="button"
-      onClick={() => {
-        setValue(!value);
-      }}
-    ></StyledButton>
-  );
+export default function CircleButton({ room }) {
+  return <StyledButton status={room}></StyledButton>;
 }
 
 const StyledButton = styled.button`

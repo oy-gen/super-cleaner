@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 import React, { useState } from 'react';
 
-export default function CircleDisplay() {
-  const [value, setValue] = useState(false);
-  return <StyledDisplay status={value}></StyledDisplay>;
+export default function CircleDisplay({ room }) {
+  return <StyledDisplay></StyledDisplay>;
 }
 
 const StyledDisplay = styled.div`
