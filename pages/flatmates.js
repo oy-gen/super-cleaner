@@ -4,7 +4,7 @@ import useStore from '../src/useStore';
 import Avatar from '@mui/material/Avatar';
 import Nav from '../components/nav';
 import CardContainer from '../components/CardContainer';
-import CircleDisplay from '../components/circleDisplay';
+import FlatmateCard from '../components/FlatmateCard';
 
 export default function FlatMates() {
   const rooms = useStore(state => state.rooms);
@@ -14,38 +14,7 @@ export default function FlatMates() {
   return (
     <CardContainer>
       {flatmates.map(flatmate => (
-        <Card key={flatmate.id} name={flatmate.name}>
-          <FlexboxColumn>
-            <FlexboxRow>
-              <div
-                style={{ display: 'flex', alignItems: 'center', gap: '15px' }}
-              >
-                <Avatar alt={flatmate.name} src={flatmate.photo} />
-                <h2>{flatmate.name}</h2>
-              </div>
-              <button
-                onClick={() =>
-                  filterAssignedRooms(flatmate.id).map(room => (
-                    <div key={room.id} name={room.name}>
-                      {room.name}
-                    </div>
-                  ))
-                }
-              >
-                open
-              </button>
-            </FlexboxRow>
-
-            <FlexboxRow>
-              {rooms.map(assignedroom => (
-                <div key={assignedroom.id} name={assignedroom.name}>
-                  {assignedroom.name}
-                  <CircleDisplay />
-                </div>
-              ))}
-            </FlexboxRow>
-          </FlexboxColumn>
-        </Card>
+        <FlatmateCard key={flatmate.id} flatmate={flatmate} />
       ))}
       <Nav></Nav>
     </CardContainer>

@@ -6,6 +6,7 @@ import CardContainer from '../components/CardContainer';
 import Avatar from '@mui/material/Avatar';
 import CircleDisplay from '../components/circleDisplay';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const rooms = useStore(state => state.rooms);
@@ -16,7 +17,7 @@ export default function Home() {
     <CardContainer>
       {rooms.map(room => (
         <Card key={room.id} name={room.name}>
-          <Link href="../rooms">
+          <Link href={`../rooms/${room.id}`}>
             <h2>{room.name}</h2>
           </Link>
           <div style={{ display: 'flex', gap: '15px', alignItems: 'center' }}>

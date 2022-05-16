@@ -3,10 +3,25 @@ import create from 'zustand';
 const useStore = create(set => {
   return {
     rooms: [
-      { name: 'Kitchen', id: 'KITCHENID', assigneeId: '', status: false },
-      { name: 'Bathroom', id: 'BATHROOMID', assigneeId: '', status: false },
-      { name: 'Livingroom', id: 'LIVINGID', assigneeId: '', status: false },
-      { name: 'Hall', id: 'HALLID', assigneeId: '', status: false },
+      {
+        name: 'Kitchen',
+        id: 'KITCHENID',
+        assigneeId: 'NormanID',
+        status: false,
+      },
+      {
+        name: 'Bathroom',
+        id: 'BATHROOMID',
+        assigneeId: 'LauraID',
+        status: false,
+      },
+      {
+        name: 'Livingroom',
+        id: 'LIVINGID',
+        assigneeId: 'PaulID',
+        status: false,
+      },
+      { name: 'Hall', id: 'HALLID', assigneeId: 'EvaID', status: false },
     ],
     flatmates: [
       {
@@ -42,7 +57,7 @@ const useStore = create(set => {
         };
       });
     },
-    assignFlatmate: (flatmateId) => {
+    assignFlatmate: flatmateId => {
       set(state => {
         return {
           rooms: (state.rooms[0].assigneeId = flatmateId),
