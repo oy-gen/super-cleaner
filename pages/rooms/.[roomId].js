@@ -4,28 +4,31 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import Circle from '../../components/Circle';
 
-export default function Room() {
+export default function handler(req,res) {
   const rooms = useStore(state => state.rooms);
   const flatmates = useStore(state => state.flatmates);
-  const { roomId } = rooms.id;
+  const changeStatus = useStore(state => state.changeStatus);
+// const { roomId } = req.query;
+// const room = rooms.find((room) => room.id === roomId);
 
   return (
-    <>
-      <CardContainer>
-        <RoomCard>
+    <CardContainer>
+      <RoomCard>
         <FlexboxColumn>
-        <button style={{width:'100px'}}>
-        <Link href="/">
-          <a>go back</a>
-        </Link>
-      </button>
-          <h1>{rooms.name}palceholder</h1>
-          </FlexboxColumn>
-          <FlexboxRow>
+          <button style={{ width: '100px' }}>
+            <Link href="/">
+              <a>go back</a>
+            </Link>
+          </button>
+          <h1>Kitchen</h1>
+        </FlexboxColumn>
+        <FlexboxRow>
           <p>Assignee:</p>
           <select
             onChange={event => {
-              rooms[0].assigneeID = event.target.value;
+              assignFlatmate(event.target.value);
+              console.log(rooms[0].assigneeId);
+              console.log(flatmates);
             }}
           >
             {flatmates.map(flatmate => (
@@ -35,14 +38,19 @@ export default function Room() {
             ))}
           </select>
         </FlexboxRow>
-          <FlexboxRow>
-            <p>Status:</p>
-            <Circle status={rooms[0].status} />
-            </FlexboxRow>
-          <p>Frequency: <span>weekly</span></p>
-        </RoomCard>
-      </CardContainer>
-    </>
+        <FlexboxRow>
+          <p>Status:</p>
+          <Circle
+            onClick={() => {
+              changeStatus();
+            }}
+          />
+        </FlexboxRow>
+        <p>
+          Frequency: <span>weekly</span>
+        </p>
+      </RoomCard>
+    </CardContainer>
   );
 }
 
